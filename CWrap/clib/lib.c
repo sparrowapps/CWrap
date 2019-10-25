@@ -1,5 +1,5 @@
 #include <stdio.h>
 
 char * hello() {
-  return "hello-world";
+  return "Hello World";
 }
