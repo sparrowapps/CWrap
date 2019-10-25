@@ -8,12 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		F3597B4B2362C0E400CE1346 /* CWrap.h in Headers */ = {isa = PBXBuildFile; fileRef = F3597B492362C0E400CE1346 /* CWrap.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F3597B552362C1F700CE1346 /* lib.c in Sources */ = {isa = PBXBuildFile; fileRef = F3597B522362C1F700CE1346 /* lib.c */; };
+		F3597B562362C1F700CE1346 /* lib.h in Headers */ = {isa = PBXBuildFile; fileRef = F3597B532362C1F700CE1346 /* lib.h */; };
+		F3597B582362C28A00CE1346 /* CLib.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3597B572362C28A00CE1346 /* CLib.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F3597B462362C0E400CE1346 /* CWrap.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CWrap.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3597B492362C0E400CE1346 /* CWrap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CWrap.h; sourceTree = "<group>"; };
 		F3597B4A2362C0E400CE1346 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F3597B522362C1F700CE1346 /* lib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lib.c; sourceTree = "<group>"; };
+		F3597B532362C1F700CE1346 /* lib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lib.h; sourceTree = "<group>"; };
+		F3597B572362C28A00CE1346 /* CLib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLib.swift; sourceTree = "<group>"; };
+		F3597B5A2362D6B400CE1346 /* module.modulemap */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.modulemap; sourceTree = "<group>"; };
+		F3597B5C2362D9B300CE1346 /* Example-CWrap.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Example-CWrap.playground"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		F3597B5D2362E0E400CE1346 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,6 +39,7 @@
 		F3597B3C2362C0E400CE1346 = {
 			isa = PBXGroup;
 			children = (
+				F3597B5D2362E0E400CE1346 /* README.md */,
 				F3597B482362C0E400CE1346 /* CWrap */,
 				F3597B472362C0E400CE1346 /* Products */,
 			);
@@ -46,10 +56,31 @@
 		F3597B482362C0E400CE1346 /* CWrap */ = {
 			isa = PBXGroup;
 			children = (
+				F3597B5B2362D99C00CE1346 /* Example */,
+				F3597B512362C1F700CE1346 /* clib */,
 				F3597B492362C0E400CE1346 /* CWrap.h */,
 				F3597B4A2362C0E400CE1346 /* Info.plist */,
+				F3597B572362C28A00CE1346 /* CLib.swift */,
 			);
 			path = CWrap;
+			sourceTree = "<group>";
+		};
+		F3597B512362C1F700CE1346 /* clib */ = {
+			isa = PBXGroup;
+			children = (
+				F3597B522362C1F700CE1346 /* lib.c */,
+				F3597B532362C1F700CE1346 /* lib.h */,
+				F3597B5A2362D6B400CE1346 /* module.modulemap */,
+			);
+			path = clib;
+			sourceTree = "<group>";
+		};
+		F3597B5B2362D99C00CE1346 /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				F3597B5C2362D9B300CE1346 /* Example-CWrap.playground */,
+			);
+			path = Example;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -59,6 +90,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3597B562362C1F700CE1346 /* lib.h in Headers */,
 				F3597B4B2362C0E400CE1346 /* CWrap.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -95,6 +127,7 @@
 				TargetAttributes = {
 					F3597B452362C0E400CE1346 = {
 						CreatedOnToolsVersion = 11.1;
+						LastSwiftMigration = 1110;
 					};
 				};
 			};
@@ -131,6 +164,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3597B552362C1F700CE1346 /* lib.c in Sources */,
+				F3597B582362C28A00CE1346 /* CLib.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +295,7 @@
 		F3597B4F2362C0E400CE1346 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = MJC4688N2N;
@@ -273,9 +309,12 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MODULEMAP_FILE = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sparrowapps.CWrap;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/CWrap/clib";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -284,6 +323,7 @@
 		F3597B502362C0E400CE1346 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = MJC4688N2N;
@@ -297,9 +337,11 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MODULEMAP_FILE = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sparrowapps.CWrap;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/CWrap/clib";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

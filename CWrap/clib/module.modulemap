@@ -1,0 +1,5 @@
+
+module CLib [system] {
+    header "lib.h"
+    export *
+}
