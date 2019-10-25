@@ -75,7 +75,7 @@ Swift Compiler - Search Paths
 
 Import Paths 항목에 $(SRCROOT)/CWrap/clib 을 입력 하여 C 소스를 찾을 수 있도록 설정 한다.
 
-## playground 를 이요한 테스트
+## playground 를 이용한 테스트
 프로젝트 네비게이션에서 새 그룹을 생성 하고
 
 new file -> playground blank 를 추가 한다.
